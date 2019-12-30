@@ -1,2 +1,2 @@
-# CSharp-ORM
-ORM library for CSharp
+# CSharp-CURD
+CURD library for CSharp

@@ -19,7 +19,7 @@ namespace SEP_Framework.Views.BaseFormPkg
         protected string SaveText = "Ok";
         protected string CancelText = "Cancel";
         public Form form;
-        protected AbstractHandleController controllerData;
+        //protected AbstractHandleController controllerData;
         protected Dictionary<string, string> listNameTable = new Dictionary<string, string>();
         protected string[] exceptCols;
         protected DataTable dt;
@@ -33,7 +33,7 @@ namespace SEP_Framework.Views.BaseFormPkg
             this.form = new Form();
             form.Text = "SIMPLE ENTERPRISE FRAMWORK";
             this.nameTable = nameTable;
-            this.controllerData = new HandleController(cnnString);
+           // this.controllerData = new HandleController(cnnString);
 
             this.save = new Button();
             this.cancel = new Button();
@@ -61,9 +61,9 @@ namespace SEP_Framework.Views.BaseFormPkg
 
         private void SetupForm()
         {
-            this.ExceptColumns(new string[] { "isDelete" });
-            this.SetPrimaryKey(controllerData.GetPrimaryKey(nameTable));
-            this.InitializeForm();
+            //this.ExceptColumns(new string[] { "isDelete" });
+            //this.SetPrimaryKey(controllerData.GetPrimaryKey(nameTable));
+            //this.InitializeForm();
         }
 
         private void SetPrimaryKey(string key)
@@ -73,62 +73,62 @@ namespace SEP_Framework.Views.BaseFormPkg
 
         protected void InitDataGridView()
         {
-            gridView.Columns.Clear();
-            gridView.Refresh();
-            dt = controllerData.ReadData(nameTable);
-            DataGridViewColumn[] columns = { };
-            List<string> tempCols = null;
-            if (exceptCols != null)
-            {
-                tempCols = exceptCols.ToList();
-            }
+            //gridView.Columns.Clear();
+            //gridView.Refresh();
+            //dt = controllerData.ReadData(nameTable);
+            //DataGridViewColumn[] columns = { };
+            //List<string> tempCols = null;
+            //if (exceptCols != null)
+            //{
+            //    tempCols = exceptCols.ToList();
+            //}
 
-            foreach (DataColumn item in dt.Columns)
-            {
-                string res = "";
-                if (tempCols != null)
-                {
-                    res = tempCols.Find((str) =>
-                    {
-                        return str == item.ColumnName;
-                    });
-                }
+            //foreach (DataColumn item in dt.Columns)
+            //{
+            //    string res = "";
+            //    if (tempCols != null)
+            //    {
+            //        res = tempCols.Find((str) =>
+            //        {
+            //            return str == item.ColumnName;
+            //        });
+            //    }
 
-                if (String.IsNullOrEmpty(res))
-                {
-                    DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    column.DataPropertyName = item.ColumnName;
-                    column.HeaderText = listNameTable.ContainsKey(item.ColumnName) ? listNameTable[item.ColumnName] : item.ColumnName;
-                    column.Name = item.ColumnName;
-                    column.ReadOnly = true;
-                    columns = columns.Concat(new DataGridViewColumn[] { column }).ToArray();
-                }
-            }
+            //    if (String.IsNullOrEmpty(res))
+            //    {
+            //        DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+            //        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //        column.DataPropertyName = item.ColumnName;
+            //        column.HeaderText = listNameTable.ContainsKey(item.ColumnName) ? listNameTable[item.ColumnName] : item.ColumnName;
+            //        column.Name = item.ColumnName;
+            //        column.ReadOnly = true;
+            //        columns = columns.Concat(new DataGridViewColumn[] { column }).ToArray();
+            //    }
+            //}
 
-            gridView.Columns.AddRange(columns);
-            if (tempCols != null)
-            {
-                foreach (string i in tempCols)
-                {
-                    dt.Columns.Remove(i);
-                }
-            }
+            //gridView.Columns.AddRange(columns);
+            //if (tempCols != null)
+            //{
+            //    foreach (string i in tempCols)
+            //    {
+            //        dt.Columns.Remove(i);
+            //    }
+            //}
 
-            gridView.DataSource = dt;
-            gridView.Location = hasLabelList ? new Point(0, labelList.ElementAt(labelList.Count - 1).Value.Location.Y + labelList.ElementAt(labelList.Count - 1).Value.Height + 50) : new Point(0, 100);
-            gridView.Size = new Size(1000, 200);
-            gridView.Name = "Data Table";
-            gridView.ReadOnly = true;
-            gridView.CellClick += Binding_Data;
-            form.Controls.Add(gridView);
-            if (dt.Rows.Count > 0)
-            {
-                for (int i = 0, j = 0; i < textList.Count && j < gridView.ColumnCount; i++, j++)
-                {
-                    textList.ElementAt(i).Value.Text = dt.Rows[0].ItemArray[j].ToString();
-                }
-            }
+            //gridView.DataSource = dt;
+            //gridView.Location = hasLabelList ? new Point(0, labelList.ElementAt(labelList.Count - 1).Value.Location.Y + labelList.ElementAt(labelList.Count - 1).Value.Height + 50) : new Point(0, 100);
+            //gridView.Size = new Size(1000, 200);
+            //gridView.Name = "Data Table";
+            //gridView.ReadOnly = true;
+            //gridView.CellClick += Binding_Data;
+            //form.Controls.Add(gridView);
+            //if (dt.Rows.Count > 0)
+            //{
+            //    for (int i = 0, j = 0; i < textList.Count && j < gridView.ColumnCount; i++, j++)
+            //    {
+            //        textList.ElementAt(i).Value.Text = dt.Rows[0].ItemArray[j].ToString();
+            //    }
+            //}
         }
 
         private void Binding_Data(object sender, DataGridViewCellEventArgs e)

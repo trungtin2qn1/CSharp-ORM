@@ -21,14 +21,14 @@ namespace SEP_Framework.Views.FormDataPkg
 
         protected override void InitializeForm()
         {
-            if (!controllerData.ReadDataFirstTime(nameTable).Columns.Contains("isDelete"))
-            {
-                controllerData.InitData(nameTable);
-            }
+            //if (!controllerData.ReadDataFirstTime(nameTable).Columns.Contains("isDelete"))
+            //{
+            //    controllerData.InitData(nameTable);
+            //}
 
-            this.InitDataGridView();
+            //this.InitDataGridView();
 
-            this.SetSizeAndAddButton(form.Height, 1000);
+            //this.SetSizeAndAddButton(form.Height, 1000);
         }
 
         protected override void clickSave()

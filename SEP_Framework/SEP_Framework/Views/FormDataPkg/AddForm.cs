@@ -26,7 +26,7 @@ namespace SEP_Framework.Views.FormDataPkg
             }
             try
             {
-                controllerData.AddData(src, nameTable);
+                //controllerData.AddData(src, nameTable);
                 foreach (var i in textList)
                 {
                     i.Value.Text = "";
@@ -48,30 +48,30 @@ namespace SEP_Framework.Views.FormDataPkg
 
         protected override void InitializeForm()
         {
-            if (!controllerData.ReadDataFirstTime(nameTable).Columns.Contains("isDelete"))
-            {
-                controllerData.InitData(nameTable);
-            }
-            int y = 0;
-            this.hasLabelList = true;
-            foreach (DataColumn item in controllerData.ReadData(nameTable).Columns)
-            {
-                if (item.ColumnName != primaryKey && item.ColumnName != "isDelete")
-                {
-                    Label tmp = new Label();
-                    TextBox txt = new TextBox();
-                    txt.Name = item.ColumnName;
-                    txt.Width = 100;
-                    tmp.Text = item.ColumnName;
-                    labelList.Add(item.ColumnName, tmp);
-                    textList.Add(item.ColumnName, txt);
-                    tmp.Location = new Point(150, 60 + y * 30);
-                    txt.Location = new Point(250, 60 + y * 30);
-                    y++;
-                    form.Controls.Add(tmp);
-                    form.Controls.Add(txt);
-                }
-            }
+            //if (!controllerData.ReadDataFirstTime(nameTable).Columns.Contains("isDelete"))
+            //{
+            //    controllerData.InitData(nameTable);
+            //}
+            //int y = 0;
+            //this.hasLabelList = true;
+            //foreach (DataColumn item in controllerData.ReadData(nameTable).Columns)
+            //{
+            //    if (item.ColumnName != primaryKey && item.ColumnName != "isDelete")
+            //    {
+            //        Label tmp = new Label();
+            //        TextBox txt = new TextBox();
+            //        txt.Name = item.ColumnName;
+            //        txt.Width = 100;
+            //        tmp.Text = item.ColumnName;
+            //        labelList.Add(item.ColumnName, tmp);
+            //        textList.Add(item.ColumnName, txt);
+            //        tmp.Location = new Point(150, 60 + y * 30);
+            //        txt.Location = new Point(250, 60 + y * 30);
+            //        y++;
+            //        form.Controls.Add(tmp);
+            //        form.Controls.Add(txt);
+            //    }
+            //}
 
             this.SetSizeAndAddButton(labelList.ElementAt(labelList.Count - 1).Value.Location.Y + labelList.ElementAt(labelList.Count - 1).Value.Height + 50, 500);
         }

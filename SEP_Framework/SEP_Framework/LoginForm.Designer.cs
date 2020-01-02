@@ -113,6 +113,7 @@
             this.loginButton.IconZoom = 90D;
             this.loginButton.IsTab = false;
             this.loginButton.Location = new System.Drawing.Point(132, 341);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.loginButton.Name = "loginButton";
             this.loginButton.Normalcolor = System.Drawing.Color.DeepSkyBlue;
             this.loginButton.OnHovercolor = System.Drawing.SystemColors.Highlight;
@@ -124,6 +125,7 @@
             this.loginButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.loginButton.Textcolor = System.Drawing.Color.White;
             this.loginButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // bunifuElipse2
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEP_Framework.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,13 @@ namespace SEP_Framework
             var registerForm = new RegisterForm();
             registerForm.Show();
 
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            
+            new HomeForm().Show();
+            this.Hide();
         }
     }
 }

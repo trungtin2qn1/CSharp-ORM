@@ -75,6 +75,12 @@
     <Compile Include="Views\FormDataPkg\FormHasForms.cs" />
     <Compile Include="Views\FormDataPkg\ReadForm.cs" />
     <Compile Include="Views\FormDataPkg\UpdateForm.cs" />
+    <Compile Include="View\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +152,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Bunifu_UI_v1.52.dll" />
+    <None Include="Image\rubbish-bin.png" />
+    <None Include="Image\pencil-edit-button.png" />
+    <None Include="Image\eye.png" />
+    <None Include="Image\minus.png" />
+    <None Include="Image\error.png" />
+    <None Include="Image\cdio.gif" />
+    <None Include="Image\fit-logo.jpg" />
+    <None Include="Image\hcmus.png" />
+    <None Include="Image\round-bg_image.png" />
+    <None Include="Image\rectangular-geometrical-shape-outline.png" />
+    <None Include="Image\icons8-rounded-rectangle-stroked-96.png" />
+    <None Include="Image\plus.png" />
     <Content Include="obj\Debug\SEP_Framework.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>

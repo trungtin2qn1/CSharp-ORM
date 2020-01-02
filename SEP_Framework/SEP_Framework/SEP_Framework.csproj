@@ -57,15 +57,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrameWork\Controllers\AbstractController.cs" />
+    <Compile Include="FrameWork\Controllers\MySQLController.cs" />
+    <Compile Include="FrameWork\Controllers\SQLServerController.cs" />
+    <Compile Include="FrameWork\Models\AbstractHandleData.cs" />
+    <Compile Include="FrameWork\Models\HandleDataMySQL.cs" />
+    <Compile Include="FrameWork\Models\HandleDataSQLServer.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberShip\MemberShip.cs" />
+    <Compile Include="FrameWork\MemberShip\MemberShip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="Utils\Crypto.cs" />
     <Compile Include="Utils\Router.cs" />
     <Compile Include="Views\BaseFormPkg\BaseForm.cs" />
@@ -81,6 +88,17 @@
     <Compile Include="View\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+=======
+    <Compile Include="FrameWork\Utils\Crypto.cs" />
+    <Compile Include="FrameWork\Utils\Router.cs" />
+    <Compile Include="FrameWork\Views\BaseFormPkg\BaseForm.cs" />
+    <Compile Include="FrameWork\Views\FactoryFormPkg\FactoryForm.cs" />
+    <Compile Include="FrameWork\Views\FormDataPkg\AddForm.cs" />
+    <Compile Include="FrameWork\Views\FormDataPkg\DeleteForm.cs" />
+    <Compile Include="FrameWork\Views\FormDataPkg\FormHasForms.cs" />
+    <Compile Include="FrameWork\Views\FormDataPkg\ReadForm.cs" />
+    <Compile Include="FrameWork\Views\FormDataPkg\UpdateForm.cs" />
+>>>>>>> e3e07963eebf8d013c056db7ed1a2d9088f56aa2
     <Compile Include="View\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

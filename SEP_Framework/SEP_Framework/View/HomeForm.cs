@@ -8,26 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SEP_Framework
+namespace SEP_Framework.View
 {
-    public partial class LoginForm : Form
+    public partial class HomeForm : Form
     {
-        public LoginForm()
+        public HomeForm()
         {
             InitializeComponent();
-            this.passwordTextBox._TextBox.PasswordChar = '*';
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
-        private void registerButton_Click(object sender, EventArgs e)
+        private void minimizeButton_Click(object sender, EventArgs e)
         {
-            var registerForm = new RegisterForm();
-            registerForm.Show();
-
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

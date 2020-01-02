@@ -63,10 +63,10 @@
     <Compile Include="FrameWork\Models\AbstractHandleData.cs" />
     <Compile Include="FrameWork\Models\HandleDataMySQL.cs" />
     <Compile Include="FrameWork\Models\HandleDataSQLServer.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\MemberShip\MemberShip.cs" />
@@ -81,13 +81,19 @@
     <Compile Include="FrameWork\Views\FormDataPkg\FormHasForms.cs" />
     <Compile Include="FrameWork\Views\FormDataPkg\ReadForm.cs" />
     <Compile Include="FrameWork\Views\FormDataPkg\UpdateForm.cs" />
+    <Compile Include="View\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -100,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +158,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Bunifu_UI_v1.52.dll" />
+    <Content Include="Image\cdio.gif" />
+    <Content Include="Image\error.png" />
+    <Content Include="Image\eye.png" />
+    <Content Include="Image\fit-logo.jpg" />
+    <Content Include="Image\hcmus.png" />
+    <Content Include="Image\icons8-rounded-rectangle-stroked-96.png" />
+    <Content Include="Image\minus.png" />
+    <Content Include="Image\pencil-edit-button.png" />
+    <Content Include="Image\plus.png" />
+    <Content Include="Image\rectangular-geometrical-shape-outline.png" />
+    <Content Include="Image\round-bg_image.png" />
+    <Content Include="Image\rubbish-bin.png" />
     <Content Include="obj\Debug\SEP_Framework.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>

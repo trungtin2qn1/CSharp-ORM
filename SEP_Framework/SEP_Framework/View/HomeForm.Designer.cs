@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.formTitleLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.closeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.chooseTableLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tableDropdown = new Bunifu.Framework.UI.BunifuDropdown();
-            this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.deleteDataButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.editDataButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.addDataButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.showDataButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.closeButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tableDropdown = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -63,6 +63,21 @@
             this.panel2.Size = new System.Drawing.Size(923, 45);
             this.panel2.TabIndex = 3;
             // 
+            // minimizeButton
+            // 
+            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
+            this.minimizeButton.Image = global::SEP_Framework.Properties.Resources.minus;
+            this.minimizeButton.ImageActive = null;
+            this.minimizeButton.Location = new System.Drawing.Point(866, 13);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(20, 18);
+            this.minimizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimizeButton.TabIndex = 6;
+            this.minimizeButton.TabStop = false;
+            this.minimizeButton.Zoom = 10;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
             // formTitleLabel
             // 
             this.formTitleLabel.AutoSize = true;
@@ -73,6 +88,32 @@
             this.formTitleLabel.Size = new System.Drawing.Size(224, 20);
             this.formTitleLabel.TabIndex = 5;
             this.formTitleLabel.Text = "Ứng dụng quản lý sinh viên";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.AliceBlue;
+            this.pictureBox1.Image = global::SEP_Framework.Properties.Resources.cdio;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton.Image = global::SEP_Framework.Properties.Resources.error;
+            this.closeButton.ImageActive = null;
+            this.closeButton.Location = new System.Drawing.Point(892, 13);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(20, 18);
+            this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.closeButton.TabIndex = 0;
+            this.closeButton.TabStop = false;
+            this.closeButton.Zoom = 10;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // chooseTableLabel
             // 
@@ -88,7 +129,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.bunifuFlatButton3);
+            this.panel1.Controls.Add(this.deleteDataButton);
             this.panel1.Controls.Add(this.editDataButton);
             this.panel1.Controls.Add(this.addDataButton);
             this.panel1.Controls.Add(this.showDataButton);
@@ -97,76 +138,42 @@
             this.panel1.Size = new System.Drawing.Size(242, 374);
             this.panel1.TabIndex = 2;
             // 
-            // panel3
+            // deleteDataButton
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.tableDropdown);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.chooseTableLabel);
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Location = new System.Drawing.Point(2, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(923, 420);
-            this.panel3.TabIndex = 4;
-            // 
-            // tableDropdown
-            // 
-            this.tableDropdown.BackColor = System.Drawing.Color.Transparent;
-            this.tableDropdown.BackgroundImage = global::SEP_Framework.Properties.Resources.round_bg_image;
-            this.tableDropdown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tableDropdown.BorderRadius = 3;
-            this.tableDropdown.ForeColor = System.Drawing.Color.SteelBlue;
-            this.tableDropdown.Items = new string[] {
-        "HocSinh",
-        "Giao Vien",
-        "Lop"};
-            this.tableDropdown.Location = new System.Drawing.Point(338, 45);
-            this.tableDropdown.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tableDropdown.Name = "tableDropdown";
-            this.tableDropdown.NomalColor = System.Drawing.Color.Transparent;
-            this.tableDropdown.onHoverColor = System.Drawing.Color.Transparent;
-            this.tableDropdown.selectedIndex = -1;
-            this.tableDropdown.Size = new System.Drawing.Size(200, 59);
-            this.tableDropdown.TabIndex = 0;
-            // 
-            // bunifuFlatButton3
-            // 
-            this.bunifuFlatButton3.Activecolor = System.Drawing.Color.DeepSkyBlue;
-            this.bunifuFlatButton3.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuFlatButton3.BorderRadius = 0;
-            this.bunifuFlatButton3.ButtonText = "Xóa dữ liệu";
-            this.bunifuFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton3.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton3.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton3.Iconimage = global::SEP_Framework.Properties.Resources.rubbish_bin;
-            this.bunifuFlatButton3.Iconimage_right = null;
-            this.bunifuFlatButton3.Iconimage_right_Selected = null;
-            this.bunifuFlatButton3.Iconimage_Selected = null;
-            this.bunifuFlatButton3.IconMarginLeft = 20;
-            this.bunifuFlatButton3.IconMarginRight = 0;
-            this.bunifuFlatButton3.IconRightVisible = true;
-            this.bunifuFlatButton3.IconRightZoom = 0D;
-            this.bunifuFlatButton3.IconVisible = true;
-            this.bunifuFlatButton3.IconZoom = 45D;
-            this.bunifuFlatButton3.IsTab = false;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(0, 221);
-            this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.bunifuFlatButton3.Name = "bunifuFlatButton3";
-            this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
-            this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton3.selected = false;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(242, 48);
-            this.bunifuFlatButton3.TabIndex = 11;
-            this.bunifuFlatButton3.Text = "Xóa dữ liệu";
-            this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteDataButton.Activecolor = System.Drawing.Color.DeepSkyBlue;
+            this.deleteDataButton.BackColor = System.Drawing.Color.Transparent;
+            this.deleteDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.deleteDataButton.BorderRadius = 0;
+            this.deleteDataButton.ButtonText = "Xóa dữ liệu";
+            this.deleteDataButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteDataButton.DisabledColor = System.Drawing.Color.Gray;
+            this.deleteDataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteDataButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.deleteDataButton.Iconimage = global::SEP_Framework.Properties.Resources.rubbish_bin;
+            this.deleteDataButton.Iconimage_right = null;
+            this.deleteDataButton.Iconimage_right_Selected = null;
+            this.deleteDataButton.Iconimage_Selected = null;
+            this.deleteDataButton.IconMarginLeft = 20;
+            this.deleteDataButton.IconMarginRight = 0;
+            this.deleteDataButton.IconRightVisible = true;
+            this.deleteDataButton.IconRightZoom = 0D;
+            this.deleteDataButton.IconVisible = true;
+            this.deleteDataButton.IconZoom = 45D;
+            this.deleteDataButton.IsTab = false;
+            this.deleteDataButton.Location = new System.Drawing.Point(0, 221);
+            this.deleteDataButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.deleteDataButton.Name = "deleteDataButton";
+            this.deleteDataButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.deleteDataButton.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
+            this.deleteDataButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.deleteDataButton.selected = false;
+            this.deleteDataButton.Size = new System.Drawing.Size(242, 48);
+            this.deleteDataButton.TabIndex = 11;
+            this.deleteDataButton.Text = "Xóa dữ liệu";
+            this.deleteDataButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.deleteDataButton.Textcolor = System.Drawing.Color.White;
+            this.deleteDataButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteDataButton.Click += new System.EventHandler(this.deleteDataButton_Click);
             // 
             // editDataButton
             // 
@@ -203,6 +210,7 @@
             this.editDataButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.editDataButton.Textcolor = System.Drawing.Color.White;
             this.editDataButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editDataButton.Click += new System.EventHandler(this.editDataButton_Click);
             // 
             // addDataButton
             // 
@@ -239,6 +247,7 @@
             this.addDataButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.addDataButton.Textcolor = System.Drawing.Color.White;
             this.addDataButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addDataButton.Click += new System.EventHandler(this.addDataButton_Click);
             // 
             // showDataButton
             // 
@@ -275,47 +284,39 @@
             this.showDataButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.showDataButton.Textcolor = System.Drawing.Color.White;
             this.showDataButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showDataButton.Click += new System.EventHandler(this.showDataButton_Click);
             // 
-            // minimizeButton
+            // panel3
             // 
-            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
-            this.minimizeButton.Image = global::SEP_Framework.Properties.Resources.minus;
-            this.minimizeButton.ImageActive = null;
-            this.minimizeButton.Location = new System.Drawing.Point(866, 13);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(20, 18);
-            this.minimizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.minimizeButton.TabIndex = 6;
-            this.minimizeButton.TabStop = false;
-            this.minimizeButton.Zoom = 10;
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.tableDropdown);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.chooseTableLabel);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Location = new System.Drawing.Point(2, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(923, 420);
+            this.panel3.TabIndex = 4;
             // 
-            // pictureBox1
+            // tableDropdown
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.AliceBlue;
-            this.pictureBox1.Image = global::SEP_Framework.Properties.Resources.cdio;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton.Image = global::SEP_Framework.Properties.Resources.error;
-            this.closeButton.ImageActive = null;
-            this.closeButton.Location = new System.Drawing.Point(892, 13);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(20, 18);
-            this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.closeButton.TabIndex = 0;
-            this.closeButton.TabStop = false;
-            this.closeButton.Zoom = 10;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.tableDropdown.BackColor = System.Drawing.Color.Transparent;
+            this.tableDropdown.BackgroundImage = global::SEP_Framework.Properties.Resources.round_bg_image;
+            this.tableDropdown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tableDropdown.BorderRadius = 3;
+            this.tableDropdown.ForeColor = System.Drawing.Color.SteelBlue;
+            this.tableDropdown.Items = new string[0];
+            this.tableDropdown.Location = new System.Drawing.Point(338, 45);
+            this.tableDropdown.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.tableDropdown.Name = "tableDropdown";
+            this.tableDropdown.NomalColor = System.Drawing.Color.Transparent;
+            this.tableDropdown.onHoverColor = System.Drawing.Color.Transparent;
+            this.tableDropdown.selectedIndex = -1;
+            this.tableDropdown.Size = new System.Drawing.Size(200, 59);
+            this.tableDropdown.TabIndex = 0;
             // 
             // HomeForm
             // 
@@ -332,12 +333,12 @@
             this.Text = "HomeForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,7 +355,7 @@
         private Bunifu.Framework.UI.BunifuDropdown tableDropdown;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuFlatButton showDataButton;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton3;
+        private Bunifu.Framework.UI.BunifuFlatButton deleteDataButton;
         private Bunifu.Framework.UI.BunifuFlatButton editDataButton;
         private Bunifu.Framework.UI.BunifuFlatButton addDataButton;
     }

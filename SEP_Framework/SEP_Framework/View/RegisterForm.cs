@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SEP_Framework.FrameWork.Controllers;
+using SEP_Framework.MemberShip;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,15 @@ namespace SEP_Framework
 {
     public partial class RegisterForm : Form
     {
+        public Member member;
         public RegisterForm()
         {
             InitializeComponent();
             this.passwordTextBox._TextBox.PasswordChar = '*';
             this.password2TextBox._TextBox.PasswordChar = '*';
+            string cnnString = @"Data Source=MAYTINH-HE52SNT;Initial Catalog=FootballPlayer;Integrated Security=True";
+            SQLServerController controller = new SQLServerController(cnnString);
+            member = new Member(controller); ;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -24,9 +30,28 @@ namespace SEP_Framework
             this.Close();
         }
 
-        private void registerButton_Click(object sender, EventArgs e)
+        private void registerButton_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            var user = this.usernameTextBox._TextBox.Text;
+            var pas = this.passwordTextBox._TextBox.Text;
+
+           
+
+            if (this.member.Register(user, pas))
+            {
+                this.Hide();
+            }
+            else
+            {
+                //Label Mes = new Label();
+                //Mes.Text = "Tài khoản đã tồn tại!";
+                //Mes.Location = new Point(103, 273);
+                //Mes.Font = new Font("Microsoft Sans Serif", 12f);
+                //Mes.Size = new System.Drawing.Size(215, 20);
+                //Mes.ForeColor = Color.White;
+                //this.Controls.Add(Mes);
+                MessageBox.Show("Tài khoản đã tồn tại");
+            }
         }
     }
 }

@@ -34,7 +34,7 @@
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.loginButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.registerButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.infoPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -97,46 +97,47 @@
             this.bunifuElipse1.ElipseRadius = 16;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // loginButton
+            // registerButton
             // 
-            this.loginButton.Activecolor = System.Drawing.Color.DeepSkyBlue;
-            this.loginButton.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.loginButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loginButton.BorderRadius = 0;
-            this.loginButton.ButtonText = "TẠO TÀI KHOẢN";
-            this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.loginButton.DisabledColor = System.Drawing.Color.Gray;
-            this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.loginButton.Iconimage = null;
-            this.loginButton.Iconimage_right = null;
-            this.loginButton.Iconimage_right_Selected = null;
-            this.loginButton.Iconimage_Selected = null;
-            this.loginButton.IconMarginLeft = 0;
-            this.loginButton.IconMarginRight = 0;
-            this.loginButton.IconRightVisible = true;
-            this.loginButton.IconRightZoom = 0D;
-            this.loginButton.IconVisible = true;
-            this.loginButton.IconZoom = 90D;
-            this.loginButton.IsTab = false;
-            this.loginButton.Location = new System.Drawing.Point(393, 386);
-            this.loginButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Normalcolor = System.Drawing.Color.DeepSkyBlue;
-            this.loginButton.OnHovercolor = System.Drawing.SystemColors.Highlight;
-            this.loginButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.loginButton.selected = false;
-            this.loginButton.Size = new System.Drawing.Size(254, 48);
-            this.loginButton.TabIndex = 7;
-            this.loginButton.Text = "TẠO TÀI KHOẢN";
-            this.loginButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.loginButton.Textcolor = System.Drawing.Color.White;
-            this.loginButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerButton.Activecolor = System.Drawing.Color.DeepSkyBlue;
+            this.registerButton.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.registerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.registerButton.BorderRadius = 0;
+            this.registerButton.ButtonText = "TẠO TÀI KHOẢN";
+            this.registerButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registerButton.DisabledColor = System.Drawing.Color.Gray;
+            this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.registerButton.Iconimage = null;
+            this.registerButton.Iconimage_right = null;
+            this.registerButton.Iconimage_right_Selected = null;
+            this.registerButton.Iconimage_Selected = null;
+            this.registerButton.IconMarginLeft = 0;
+            this.registerButton.IconMarginRight = 0;
+            this.registerButton.IconRightVisible = true;
+            this.registerButton.IconRightZoom = 0D;
+            this.registerButton.IconVisible = true;
+            this.registerButton.IconZoom = 90D;
+            this.registerButton.IsTab = false;
+            this.registerButton.Location = new System.Drawing.Point(393, 386);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Normalcolor = System.Drawing.Color.DeepSkyBlue;
+            this.registerButton.OnHovercolor = System.Drawing.SystemColors.Highlight;
+            this.registerButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.registerButton.selected = false;
+            this.registerButton.Size = new System.Drawing.Size(254, 48);
+            this.registerButton.TabIndex = 7;
+            this.registerButton.Text = "TẠO TÀI KHOẢN";
+            this.registerButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.registerButton.Textcolor = System.Drawing.Color.White;
+            this.registerButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click_1);
             // 
             // bunifuElipse2
             // 
             this.bunifuElipse2.ElipseRadius = 24;
-            this.bunifuElipse2.TargetControl = this.loginButton;
+            this.bunifuElipse2.TargetControl = this.registerButton;
             // 
             // infoPanel
             // 
@@ -320,7 +321,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.registerTitle);
             this.Controls.Add(this.infoPanel);
-            this.Controls.Add(this.loginButton);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameLabel);
@@ -346,7 +347,7 @@
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label passwordLabel;
         private Bunifu.Framework.UI.BunifuTextbox passwordTextBox;
-        private Bunifu.Framework.UI.BunifuFlatButton loginButton;
+        private Bunifu.Framework.UI.BunifuFlatButton registerButton;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         public Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private System.Windows.Forms.Panel infoPanel;

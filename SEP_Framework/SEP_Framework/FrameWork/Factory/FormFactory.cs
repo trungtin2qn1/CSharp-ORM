@@ -1,4 +1,5 @@
-﻿using SEP_Framework.Views.BaseFormPkg;
+﻿using SEP_Framework.FrameWork.Controllers;
+using SEP_Framework.Views.BaseFormPkg;
 using SEP_Framework.Views.FormDataPkg;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEP_Framework.Views.FactoryFormPkg
+namespace SEP_Framework.FrameWork.Factory
 {
     public enum typeForm
     {
@@ -16,27 +17,28 @@ namespace SEP_Framework.Views.FactoryFormPkg
         READ,
         HASFORMS
     };
-    public class FormFactory
+
+    class FormFactory
     {
-        public BaseForm getForm(typeForm type, string cnnString, string tableName, BaseForm rootForm)
+        public BaseForm getForm(typeForm type, AbstractController controller, string tableName, BaseForm rootForm)
         {
             BaseForm res = null;
             switch (type)
             {
                 case typeForm.ADD:
-                    res = new AddForm(cnnString, tableName);
+                    res = new AddForm(controller, tableName);
                     return res;
                 case typeForm.READ:
-                    res = new ReadForm(cnnString, tableName);
+                    res = new ReadForm(controller, tableName);
                     return res;
                 case typeForm.UPDATE:
-                    res = new UpdateForm(cnnString, tableName);
+                    res = new UpdateForm(controller, tableName);
                     return res;
                 case typeForm.DELETE:
-                    res = new DeleteForm(cnnString, tableName);
+                    res = new DeleteForm(controller, tableName);
                     return res;
                 case typeForm.HASFORMS:
-                    res = new FormHasForms(cnnString, tableName, rootForm);
+                    res = new FormHasForms(controller, tableName, rootForm);
                     return res;
                 default:
                     return res;

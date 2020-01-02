@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEP_Framework.FrameWork.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -19,21 +20,20 @@ namespace SEP_Framework.Views.BaseFormPkg
         protected string SaveText = "Ok";
         protected string CancelText = "Cancel";
         public Form form;
-        //protected AbstractHandleController controllerData;
+        protected AbstractController controllerData;
         protected Dictionary<string, string> listNameTable = new Dictionary<string, string>();
-        protected string[] exceptCols;
         protected DataTable dt;
         protected Dictionary<string, Label> labelList = new Dictionary<string, Label>();
         protected Dictionary<string, TextBox> textList = new Dictionary<string, TextBox>();
         public string title = "Base Form";
         protected bool hasLabelList = false;
 
-        public BaseForm(string cnnString, string nameTable)
+        public BaseForm(AbstractController controller, string nameTable)
         {
             this.form = new Form();
-            form.Text = "SIMPLE ENTERPRISE FRAMWORK";
+            form.Text = "SIMPLE ENTERPRISE FRAMWORK11111111111111111111";
             this.nameTable = nameTable;
-           // this.controllerData = new HandleController(cnnString);
+            this.controllerData = controller;
 
             this.save = new Button();
             this.cancel = new Button();
@@ -61,9 +61,8 @@ namespace SEP_Framework.Views.BaseFormPkg
 
         private void SetupForm()
         {
-            //this.ExceptColumns(new string[] { "isDelete" });
-            //this.SetPrimaryKey(controllerData.GetPrimaryKey(nameTable));
-            //this.InitializeForm();
+            this.SetPrimaryKey(controllerData.GetPrimaryKey(nameTable));
+            this.InitializeForm();
         }
 
         private void SetPrimaryKey(string key)
@@ -73,62 +72,37 @@ namespace SEP_Framework.Views.BaseFormPkg
 
         protected void InitDataGridView()
         {
-            //gridView.Columns.Clear();
-            //gridView.Refresh();
-            //dt = controllerData.ReadData(nameTable);
-            //DataGridViewColumn[] columns = { };
-            //List<string> tempCols = null;
-            //if (exceptCols != null)
-            //{
-            //    tempCols = exceptCols.ToList();
-            //}
+            gridView.Columns.Clear();
+            gridView.Refresh();
+            dt = controllerData.ReadData(nameTable);
+            DataGridViewColumn[] columns = { };
 
-            //foreach (DataColumn item in dt.Columns)
-            //{
-            //    string res = "";
-            //    if (tempCols != null)
-            //    {
-            //        res = tempCols.Find((str) =>
-            //        {
-            //            return str == item.ColumnName;
-            //        });
-            //    }
+            foreach (DataColumn item in dt.Columns)
+            {
+                    DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    column.DataPropertyName = item.ColumnName;
+                    column.HeaderText = listNameTable.ContainsKey(item.ColumnName) ? listNameTable[item.ColumnName] : item.ColumnName;
+                    column.Name = item.ColumnName;
+                    column.ReadOnly = true;
+                    columns = columns.Concat(new DataGridViewColumn[] { column }).ToArray();
+            }
 
-            //    if (String.IsNullOrEmpty(res))
-            //    {
-            //        DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-            //        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //        column.DataPropertyName = item.ColumnName;
-            //        column.HeaderText = listNameTable.ContainsKey(item.ColumnName) ? listNameTable[item.ColumnName] : item.ColumnName;
-            //        column.Name = item.ColumnName;
-            //        column.ReadOnly = true;
-            //        columns = columns.Concat(new DataGridViewColumn[] { column }).ToArray();
-            //    }
-            //}
-
-            //gridView.Columns.AddRange(columns);
-            //if (tempCols != null)
-            //{
-            //    foreach (string i in tempCols)
-            //    {
-            //        dt.Columns.Remove(i);
-            //    }
-            //}
-
-            //gridView.DataSource = dt;
-            //gridView.Location = hasLabelList ? new Point(0, labelList.ElementAt(labelList.Count - 1).Value.Location.Y + labelList.ElementAt(labelList.Count - 1).Value.Height + 50) : new Point(0, 100);
-            //gridView.Size = new Size(1000, 200);
-            //gridView.Name = "Data Table";
-            //gridView.ReadOnly = true;
-            //gridView.CellClick += Binding_Data;
-            //form.Controls.Add(gridView);
-            //if (dt.Rows.Count > 0)
-            //{
-            //    for (int i = 0, j = 0; i < textList.Count && j < gridView.ColumnCount; i++, j++)
-            //    {
-            //        textList.ElementAt(i).Value.Text = dt.Rows[0].ItemArray[j].ToString();
-            //    }
-            //}
+            gridView.Columns.AddRange(columns);
+            gridView.DataSource = dt;
+            gridView.Location = hasLabelList ? new Point(0, labelList.ElementAt(labelList.Count - 1).Value.Location.Y + labelList.ElementAt(labelList.Count - 1).Value.Height + 50) : new Point(0, 100);
+            gridView.Size = new Size(1000, 200);
+            gridView.Name = "Data Table";
+            gridView.ReadOnly = true;
+            gridView.CellClick += Binding_Data;
+            form.Controls.Add(gridView);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0, j = 0; i < textList.Count && j < gridView.ColumnCount; i++, j++)
+                {
+                    textList.ElementAt(i).Value.Text = dt.Rows[0].ItemArray[j].ToString();
+                }
+            }
         }
 
         private void Binding_Data(object sender, DataGridViewCellEventArgs e)
@@ -156,11 +130,6 @@ namespace SEP_Framework.Views.BaseFormPkg
         }
 
         protected virtual void clickSave() { }
-
-        public void ExceptColumns(string[] cols)
-        {
-            exceptCols = cols;
-        }
 
         public virtual void ChangeNameColumns(Dictionary<string, string> listName) { }
 

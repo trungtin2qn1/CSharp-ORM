@@ -1,4 +1,5 @@
-﻿using SEP_Framework.Views.BaseFormPkg;
+﻿using SEP_Framework.FrameWork.Controllers;
+using SEP_Framework.Views.BaseFormPkg;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,7 +17,7 @@ namespace SEP_Framework.Views.FormDataPkg
         protected BaseForm rootForm;
         protected ComboBox cb;
 
-        public FormHasForms(string cnnString, string nameTable, BaseForm rootForm) : base(cnnString, nameTable)
+        public FormHasForms(AbstractController controller, string nameTable, BaseForm rootForm) : base(controller, nameTable)
         {
             this.form = rootForm.form;
             this.rootForm = rootForm;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,12 @@ namespace SEP_Framework.Utils
         private String nameDB;
         private static DBInfoSingleton dbInfoSingleton;
         private DBInfoSingleton() {
-            this.cnnString = @"Server=localhost;Database=mydb;Uid=root;Pwd=123123";
-            this.nameDB = "mydb";
-            //this.cnnString = @"Data Source=MAYTINH-HE52SNT;Initial Catalog=FootballPlayer;Integrated Security=True";
-            //this.nameDB = "FootballPlayer";
+            //this.cnnString = @"Server=localhost;Database=mydb;Uid=root;Pwd=123123";
+            //this.nameDB = "mydb";
+            this.cnnString = @"Data Source=MAYTINH-HE52SNT;Initial Catalog=FootballPlayer;Integrated Security=True";
+            this.nameDB = "FootballPlayer";
         }
+        
 
         public static DBInfoSingleton getInstance()
         {
@@ -29,6 +31,7 @@ namespace SEP_Framework.Utils
         {
             return cnnString;
         }
+
         public String getNameDB()
         {
             return nameDB;

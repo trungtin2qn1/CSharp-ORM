@@ -23,7 +23,7 @@ namespace SEP_Framework.View
         public HomeForm()
         {
             InitializeComponent();
-            controller = new MySQLController(cnnString,nameDB);
+            controller = new SQLServerController(cnnString,nameDB);
             List<string> tablenames;
             tablenames=controller.getAllTableName(nameDB);
             this.tableDropdown.Items = tablenames.ToArray();

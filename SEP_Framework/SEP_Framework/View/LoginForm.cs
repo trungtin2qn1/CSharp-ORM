@@ -14,8 +14,9 @@ namespace SEP_Framework
         {
             InitializeComponent();
             this.passwordTextBox._TextBox.PasswordChar = '*';
-            string cnnString = ConnectionStringSingleton.getInstance().getCnnString();
-            SQLServerController controller = new SQLServerController(cnnString);
+            string cnnString = DBInfoSingleton.getInstance().getCnnString();
+            string nameDB = DBInfoSingleton.getInstance().getNameDB();
+            AbstractController controller = new MySQLController(cnnString, nameDB);
             member = new Member(controller); ;
         }
 

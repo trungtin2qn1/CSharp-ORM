@@ -6,24 +6,32 @@ using System.Threading.Tasks;
 
 namespace SEP_Framework.Utils
 {
-    class ConnectionStringSingleton
+    class DBInfoSingleton
     {
         private String cnnString;
-        private static ConnectionStringSingleton cnnStringSingleton;
-        private ConnectionStringSingleton() {
-            this.cnnString = @"Data Source=Tu-PC;Initial Catalog=BikeStores;Integrated Security=True"; 
+        private String nameDB;
+        private static DBInfoSingleton dbInfoSingleton;
+        private DBInfoSingleton() {
+            this.cnnString = @"Server=localhost;Database=mydb;Uid=root;Pwd=123123";
+            this.nameDB = "mydb";
+            //this.cnnString = @"Data Source=MAYTINH-HE52SNT;Initial Catalog=FootballPlayer;Integrated Security=True";
+            //this.nameDB = "FootballPlayer";
         }
 
-        public static ConnectionStringSingleton getInstance()
+        public static DBInfoSingleton getInstance()
         {
-            if (cnnStringSingleton == null)
-                cnnStringSingleton = new ConnectionStringSingleton();
-            return cnnStringSingleton;
+            if (dbInfoSingleton == null)
+                dbInfoSingleton = new DBInfoSingleton();
+            return dbInfoSingleton;
         }
 
         public String getCnnString()
         {
             return cnnString;
+        }
+        public String getNameDB()
+        {
+            return nameDB;
         }
     }
 }

@@ -13,9 +13,10 @@ namespace SEP_Framework.FrameWork.Controllers
     public class SQLServerController : AbstractController
     {
 
-        public SQLServerController(string cnnStr)
+        public SQLServerController(string cnnStr, string nameDB)
         {
             this.dataHandle = new HandleDataSQLServer(cnnStr);
+            this.nameDB = nameDB;
         }
 
         public override bool AddData(Dictionary<string, string> data, string nameTable)

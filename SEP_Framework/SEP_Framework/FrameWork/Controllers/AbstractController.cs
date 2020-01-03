@@ -11,6 +11,7 @@ namespace SEP_Framework.FrameWork.Controllers
     public abstract class AbstractController
     {
         protected AbstractHandleData dataHandle;
+        protected string nameDB;
 
         //public abstract DataTable ReadDataFirstTime(string nameTable);
 

@@ -9,16 +9,17 @@ using SEP_Framework.Utils;
 
 namespace SEP_Framework.FrameWork.Controllers
 {
-    class MySQLController : AbstractController
+    public class MySQLController : AbstractController
     {
-        public MySQLController(string cnnStr)
+        public MySQLController(string cnnStr, string nameDB)
         {
             this.dataHandle = new HandleDataMySQL(cnnStr);
+            this.nameDB = nameDB;
         }
 
         public override bool AddData(Dictionary<string, string> data, string nameTable)
         {
-            string sql = "insert into " + nameTable + " values(";
+            string sql = "insert into " + nameTable + " values(default, ";
             for (int i = 0; i < data.Count ; i++)
             {
                 if (i < data.Count - 1)
@@ -47,7 +48,7 @@ namespace SEP_Framework.FrameWork.Controllers
         {
             if (!isExistUserTable())
             {
-                var createTable = "create table Users(username varchar(30), password varchar(30),isLogin bit,ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY)";
+                var createTable = "create table Users(username varchar(30), password varchar(30),isLogin bit,ID INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(`id`))";
                 dataHandle.executeData(createTable);
             }
         }
@@ -78,7 +79,7 @@ namespace SEP_Framework.FrameWork.Controllers
 
         public override bool isExistUserTable()
         {
-            var checkTable = "SELECT * FROM INFORMATION_SCHEMA.TABLES Where Table_Schema = 'dbo'  AND Table_Name = 'Users'";
+            var checkTable = string.Format("SELECT table_name FROM information_schema.tables WHERE table_schema = '{0}' and table_name = 'users'", this.nameDB);
             DataTable dataTable = dataHandle.getData(checkTable);
             return dataTable.Rows.Count != 0;
         }
@@ -87,7 +88,7 @@ namespace SEP_Framework.FrameWork.Controllers
         {
             if (Authen(username, password))
             {
-                var login = string.Format("Update Users Set isLogin = 'true' where username ='{0}'", username);
+                var login = string.Format("Update Users Set isLogin = 1 where username ='{0}'", username);
                 if (dataHandle.executeData(login) != 0)
                     return true;
             }
@@ -96,7 +97,7 @@ namespace SEP_Framework.FrameWork.Controllers
 
         public override bool Logout(string username)
         {
-            var logout = string.Format("Update Users Set isLogin = 'false' where username ='{0}'", username);
+            var logout = string.Format("Update Users Set isLogin = 0 where username ='{0}'", username);
             if (dataHandle.executeData(logout) != 0)
                 return true;
             return false;
@@ -119,7 +120,7 @@ namespace SEP_Framework.FrameWork.Controllers
         public override bool Register(string username, string password)
         {
             if (isExist(username)) return false;
-            var insert = string.Format("insert into Users values('{0}','{1}','false')", username, Crypto.Encrypt(password));
+            var insert = string.Format("insert into Users values('{0}','{1}',0, default)", username, Crypto.Encrypt(password));
             if (dataHandle.executeData(insert) != 0)
                 return true;
             return false;
@@ -172,12 +173,12 @@ namespace SEP_Framework.FrameWork.Controllers
         public override List<string> getAllTableName(string nameDB)
         {
             List<string> res = new List<string>();
-            string sql = string.Format("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG ='{0}'", nameDB);
+            string sql = string.Format("SELECT table_name FROM information_schema.tables WHERE table_schema = '{0}'", nameDB);
             DataTable result = this.dataHandle.getData(sql);
             foreach (DataRow row in result.Rows)
             {
                 string name = row["TABLE_NAME"].ToString();
-                if(name != "Users")
+                if(name != "users")
                 {
                     res.Add(name);
                 }

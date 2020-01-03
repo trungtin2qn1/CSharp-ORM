@@ -16,15 +16,16 @@ namespace SEP_Framework.View
 {
     public partial class HomeForm : Form
     {
-        public SQLServerController controller;
+        public AbstractController controller;
         FormFactory formFactory = new FormFactory();
-        string cnnString = ConnectionStringSingleton.getInstance().getCnnString();
+        string cnnString = DBInfoSingleton.getInstance().getCnnString();
+        string nameDB = DBInfoSingleton.getInstance().getNameDB();
         public HomeForm()
         {
             InitializeComponent();
-            controller = new SQLServerController(cnnString);
+            controller = new MySQLController(cnnString,nameDB);
             List<string> tablenames;
-            tablenames=controller.getAllTableName("FootballPlayer");
+            tablenames=controller.getAllTableName(nameDB);
             this.tableDropdown.Items = tablenames.ToArray();
         }
 

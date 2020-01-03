@@ -82,6 +82,12 @@
     <Compile Include="FrameWork\Models\AbstractHandleData.cs" />
     <Compile Include="FrameWork\Models\HandleDataMySQL.cs" />
     <Compile Include="FrameWork\Models\HandleDataSQLServer.cs" />
+    <Compile Include="TempForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TempForm.Designer.cs">
+      <DependentUpon>TempForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ConnectionStringSingleton.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,9 @@
     <Compile Include="View\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TempForm.resx">
+      <DependentUpon>TempForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Bunifu_UI_v1.52.dll" />
+    <None Include="assets\icon.ico" />
     <Content Include="bin\Debug\Bunifu_UI_v1.52.dll" />
     <Content Include="bin\Debug\MaterialSkin.dll" />
     <Content Include="bin\Debug\SEP_Framework.exe" />

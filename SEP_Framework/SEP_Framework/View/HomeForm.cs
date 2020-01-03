@@ -24,7 +24,7 @@ namespace SEP_Framework.View
             InitializeComponent();
             controller = new SQLServerController(cnnString);
             List<string> tablenames;
-            tablenames=controller.getAllTableName("FootballPlayer");
+            tablenames=controller.getAllTableName(ConnectionStringSingleton.getInstance().getDBName());
             this.tableDropdown.Items = tablenames.ToArray();
         }
 

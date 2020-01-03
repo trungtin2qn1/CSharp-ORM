@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SEP_Framework.FrameWork.Models
 {
     public abstract class AbstractHandleData
     {
-        protected SqlConnection connect;
+        protected DbConnection connect;
 
         public abstract DataTable getData(string sql);
 

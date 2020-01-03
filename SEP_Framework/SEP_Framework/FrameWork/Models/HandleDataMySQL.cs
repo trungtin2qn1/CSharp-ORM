@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace SEP_Framework.FrameWork.Models
 
         public override int executeData(string sql)
         {
-            MySqlCommand sql_query = new MySqlCommand(sql, this.connect);
+            MySqlCommand sql_query = new MySqlCommand(sql, (MySqlConnection)this.connect);
             this.connect.Open();
             int result = 1;
             try
@@ -39,7 +40,7 @@ namespace SEP_Framework.FrameWork.Models
             this.connect.Open();
             try
             {
-                MySqlDataAdapter  adapt = new MySqlDataAdapter (sql, this.connect);
+                MySqlDataAdapter  adapt = new MySqlDataAdapter (sql, (MySqlConnection)this.connect);
 
                 DataTable table_data = new DataTable();
                 adapt.Fill(table_data);
@@ -55,7 +56,7 @@ namespace SEP_Framework.FrameWork.Models
 
         public override bool isExist(string sql)
         {
-            MySqlCommand lenh = new MySqlCommand(sql, this.connect);
+            MySqlCommand lenh = new MySqlCommand(sql, (MySqlConnection)this.connect);
             this.connect.Open();
 
             MySqlDataReader dr = lenh.ExecuteReader();

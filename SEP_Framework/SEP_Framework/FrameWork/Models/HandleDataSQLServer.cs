@@ -18,7 +18,7 @@ namespace SEP_Framework.FrameWork.Models
 
         public override int executeData(string sql)
         {
-            SqlCommand sql_query = new SqlCommand(sql, this.connect);
+            SqlCommand sql_query = new SqlCommand(sql, (SqlConnection)this.connect);
             this.connect.Open();
             int result = 1;
             try
@@ -40,7 +40,7 @@ namespace SEP_Framework.FrameWork.Models
             this.connect.Open();
             try
             {
-                SqlDataAdapter adapt = new SqlDataAdapter(sql, this.connect);
+                SqlDataAdapter adapt = new SqlDataAdapter(sql, (SqlConnection)this.connect);
 
                 DataTable table_data = new DataTable();
                 adapt.Fill(table_data);
@@ -56,7 +56,7 @@ namespace SEP_Framework.FrameWork.Models
 
         public override bool isExist(string sql)
         {
-            SqlCommand lenh = new SqlCommand(sql, this.connect);
+            SqlCommand lenh = new SqlCommand(sql, (SqlConnection)this.connect);
             this.connect.Open();
 
             SqlDataReader dr = lenh.ExecuteReader();

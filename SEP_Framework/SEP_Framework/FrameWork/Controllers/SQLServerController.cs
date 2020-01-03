@@ -3,6 +3,7 @@ using SEP_Framework.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace SEP_Framework.FrameWork.Controllers
         public override bool AddData(Dictionary<string, string> data, string nameTable)
         {
             string sql = "insert into " + nameTable + " values(";
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Count ; i++)
             {
                 if (i < data.Count - 1)
                 {
@@ -28,7 +29,7 @@ namespace SEP_Framework.FrameWork.Controllers
                 }
                 else
                 {
-                    sql += ("N'" + data.ElementAt(i).Value + "', 0)");
+                    sql += ("N'" + data.ElementAt(i).Value + "')");
                 }
             }
 
@@ -48,29 +49,15 @@ namespace SEP_Framework.FrameWork.Controllers
         {
             if (!isExistUserTable())
             {
-                var createTable = "create table User(username varchar(30), password varchar(30),isLogin bit,ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY)";
+                var createTable = "create table Users(username varchar(30), password varchar(30),isLogin bit,ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY)";
                 dataHandle.executeData(createTable);
             }
         }
 
-        public override bool DeleteData(Dictionary<string, string> data, string nameTable, string primaryKey)
+        public override bool DeleteData(string data, string nameTable, string primaryKey)
         {
-            string sql = "update " + nameTable + " set ";
-            for (int i = 0; i < data.Count; i++)
-            {
-                if (data.ElementAt(i).Key != primaryKey)
-                {
-                    if (i < data.Count - 1)
-                    {
-                        sql += (data.ElementAt(i).Key + " = '" + data.ElementAt(i).Value + "', ");
-                    }
-                    else
-                    {
-                        sql += (data.ElementAt(i).Key + " = ' " + data.ElementAt(i).Value + "', isDelete = 1");
-                    }
-                }
-            }
-            sql += " where " + primaryKey + " = " + data[primaryKey];
+            string sql = "delete from " + nameTable;
+            sql += " where " + primaryKey + " = " + data;
 
             try
             {
@@ -93,7 +80,7 @@ namespace SEP_Framework.FrameWork.Controllers
 
         public override bool isExistUserTable()
         {
-            var checkTable = "SELECT * FROM INFORMATION_SCHEMA.TABLES Where Table_Schema = 'dbo'  AND Table_Name = 'User'";
+            var checkTable = "SELECT * FROM INFORMATION_SCHEMA.TABLES Where Table_Schema = 'dbo'  AND Table_Name = 'Users'";
             DataTable dataTable = dataHandle.getData(checkTable);
             return dataTable.Rows.Count != 0;
         }
@@ -102,7 +89,7 @@ namespace SEP_Framework.FrameWork.Controllers
         {
             if (Authen(username, password))
             {
-                var login = string.Format("Update User Set isLogin = 'true' where username ='{0}'", username);
+                var login = string.Format("Update Users Set isLogin = 'true' where username ='{0}'", username);
                 if (dataHandle.executeData(login) != 0)
                     return true;
             }
@@ -111,7 +98,7 @@ namespace SEP_Framework.FrameWork.Controllers
 
         public override bool Logout(string username)
         {
-            var logout = string.Format("Update User Set isLogin = 'false' where username ='{0}'", username);
+            var logout = string.Format("Update Users Set isLogin = 'false' where username ='{0}'", username);
             if (dataHandle.executeData(logout) != 0)
                 return true;
             return false;
@@ -119,14 +106,14 @@ namespace SEP_Framework.FrameWork.Controllers
 
         public override DataTable ReadData(string nameTable)
         {
-            string sql = "select * from " + nameTable + " where isDelete <> 1";
+            string sql = "select * from " + nameTable ;
             DataTable result = this.dataHandle.getData(sql);
             return result;
         }
 
         private bool isExist(string username)
         {
-            var check = string.Format("select * from User where username = '{0}'", username);
+            var check = string.Format("select * from Users where username = '{0}'", username);
             var dt = dataHandle.getData(check);
             return dt.Rows.Count != 0;
         }
@@ -134,7 +121,7 @@ namespace SEP_Framework.FrameWork.Controllers
         public override bool Register(string username, string password)
         {
             if (isExist(username)) return false;
-            var insert = string.Format("insert into User values('{0}','{1}','false')", username, Crypto.Encrypt(password));
+            var insert = string.Format("insert into Users values('{0}','{1}','false')", username, Crypto.Encrypt(password));
             if (dataHandle.executeData(insert) != 0)
                 return true;
             return false;
@@ -173,7 +160,7 @@ namespace SEP_Framework.FrameWork.Controllers
 
         protected override bool Authen(string username, string password)
         {
-            var authen = string.Format("select * from Session where username = '{0}'", username);
+            var authen = string.Format("select * from Users where username = '{0}'", username);
             DataTable data = dataHandle.getData(authen);
             if (data.Rows.Count != 0)
             {
@@ -182,6 +169,22 @@ namespace SEP_Framework.FrameWork.Controllers
                 return username == u && password == p;
             }
             return false;
+        }
+
+        public override List<string> getAllTableName(string nameDB)
+        {
+            List<string> res = new List<string>();
+            string sql = string.Format("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG ='{0}'", nameDB);
+            DataTable result = this.dataHandle.getData(sql);
+            foreach (DataRow row in result.Rows)
+            {
+                string name = row["TABLE_NAME"].ToString();
+                if(name != "Users")
+                {
+                    res.Add(name);
+                }
+            }
+            return res;
         }
     }
 }

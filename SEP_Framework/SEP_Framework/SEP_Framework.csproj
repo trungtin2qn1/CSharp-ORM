@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>assets\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
@@ -40,12 +43,27 @@
       <HintPath>..\packages\GCDesign.1.0.0\lib\net46\GCDesign.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.18\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,9 +78,11 @@
     <Compile Include="FrameWork\Controllers\AbstractController.cs" />
     <Compile Include="FrameWork\Controllers\MySQLController.cs" />
     <Compile Include="FrameWork\Controllers\SQLServerController.cs" />
+    <Compile Include="FrameWork\Factory\FormFactory.cs" />
     <Compile Include="FrameWork\Models\AbstractHandleData.cs" />
     <Compile Include="FrameWork\Models\HandleDataMySQL.cs" />
     <Compile Include="FrameWork\Models\HandleDataSQLServer.cs" />
+    <Compile Include="Utils\ConnectionStringSingleton.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,7 +95,6 @@
     <Compile Include="FrameWork\Utils\Crypto.cs" />
     <Compile Include="FrameWork\Utils\Router.cs" />
     <Compile Include="FrameWork\Views\BaseFormPkg\BaseForm.cs" />
-    <Compile Include="FrameWork\Views\FactoryFormPkg\FactoryForm.cs" />
     <Compile Include="FrameWork\Views\FormDataPkg\AddForm.cs" />
     <Compile Include="FrameWork\Views\FormDataPkg\DeleteForm.cs" />
     <Compile Include="FrameWork\Views\FormDataPkg\FormHasForms.cs" />
@@ -112,6 +131,7 @@
     <EmbeddedResource Include="View\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\SEP_Framework.exe.config" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\SEP_Framework.csprojAssemblyReference.cache" />
@@ -158,6 +178,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Bunifu_UI_v1.52.dll" />
+    <Content Include="bin\Debug\Bunifu_UI_v1.52.dll" />
+    <Content Include="bin\Debug\MaterialSkin.dll" />
+    <Content Include="bin\Debug\SEP_Framework.exe" />
+    <Content Include="bin\Debug\SEP_Framework.pdb" />
     <Content Include="Image\cdio.gif" />
     <Content Include="Image\error.png" />
     <Content Include="Image\eye.png" />
@@ -174,7 +198,6 @@
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

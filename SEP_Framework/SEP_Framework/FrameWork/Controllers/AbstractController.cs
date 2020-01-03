@@ -14,6 +14,8 @@ namespace SEP_Framework.FrameWork.Controllers
 
         //public abstract DataTable ReadDataFirstTime(string nameTable);
 
+        public abstract List<string> getAllTableName(string nameDB);
+
         public abstract string GetPrimaryKey(string nameTable);
 
         public abstract DataTable ReadData(string nameTable);
@@ -22,7 +24,7 @@ namespace SEP_Framework.FrameWork.Controllers
 
         public abstract bool UpdateData(Dictionary<string, string> data, string nameTable, string primaryKey);
 
-        public abstract bool DeleteData(Dictionary<string, string> data, string nameTable, string primaryKey);
+        public abstract bool DeleteData(string data, string nameTable, string primaryKey);
 
         //public abstract bool InitData(string nameTable);
 

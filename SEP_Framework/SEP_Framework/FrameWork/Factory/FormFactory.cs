@@ -14,13 +14,12 @@ namespace SEP_Framework.FrameWork.Factory
         ADD,
         DELETE,
         UPDATE,
-        READ,
-        HASFORMS
+        READ
     };
 
     class FormFactory
     {
-        public BaseForm getForm(typeForm type, AbstractController controller, string tableName, BaseForm rootForm)
+        public BaseForm getForm(typeForm type, AbstractController controller, string tableName)
         {
             BaseForm res = null;
             switch (type)
@@ -36,9 +35,6 @@ namespace SEP_Framework.FrameWork.Factory
                     return res;
                 case typeForm.DELETE:
                     res = new DeleteForm(controller, tableName);
-                    return res;
-                case typeForm.HASFORMS:
-                    res = new FormHasForms(controller, tableName, rootForm);
                     return res;
                 default:
                     return res;

@@ -43,7 +43,7 @@ namespace SEP_Framework.View
         {
             if(tableDropdown.selectedIndex != -1)
             {
-                BaseForm readForm = formFactory.getForm(typeForm.READ, controller, tableDropdown.selectedValue, null);
+                BaseForm readForm = formFactory.getForm(typeForm.READ, controller, tableDropdown.selectedValue);
                 readForm.ShowForm();
             }
             else
@@ -58,7 +58,7 @@ namespace SEP_Framework.View
         {
             if (tableDropdown.selectedIndex != -1)
             {
-                BaseForm addForm = formFactory.getForm(typeForm.ADD, controller, tableDropdown.selectedValue, null);
+                BaseForm addForm = formFactory.getForm(typeForm.ADD, controller, tableDropdown.selectedValue);
                 addForm.ShowForm();
             }
             else
@@ -71,7 +71,7 @@ namespace SEP_Framework.View
         {
             if (tableDropdown.selectedIndex != -1)
             {
-                BaseForm updateForm = formFactory.getForm(typeForm.UPDATE, controller, tableDropdown.selectedValue, null);
+                BaseForm updateForm = formFactory.getForm(typeForm.UPDATE, controller, tableDropdown.selectedValue);
                 updateForm.ShowForm();
             }
             else
@@ -84,7 +84,7 @@ namespace SEP_Framework.View
         {
             if (tableDropdown.selectedIndex != -1)
             {
-                BaseForm deleteForm = formFactory.getForm(typeForm.DELETE, controller, tableDropdown.selectedValue, null);
+                BaseForm deleteForm = formFactory.getForm(typeForm.DELETE, controller, tableDropdown.selectedValue);
                 deleteForm.ShowForm();
             }
             else

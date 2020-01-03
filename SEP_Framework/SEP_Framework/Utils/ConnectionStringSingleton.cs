@@ -11,7 +11,7 @@ namespace SEP_Framework.Utils
         private String cnnString;
         private static ConnectionStringSingleton cnnStringSingleton;
         private ConnectionStringSingleton() {
-            this.cnnString = @"Data Source=Tu-PC,1433,Initial Catalog=design_pattern_db;Integrated Security=True"; 
+            this.cnnString = @"Data Source=Tu-PC;Initial Catalog=BikeStores;Integrated Security=True"; 
         }
 
         public static ConnectionStringSingleton getInstance()
